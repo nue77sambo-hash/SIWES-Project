@@ -1,0 +1,165 @@
+@import "tailwindcss";
+
+/* =========================================
+   ROOTSCROLL THEME VARIABLES
+========================================= */
+
+:root {
+  color-scheme: light;
+
+  --background: #F7F4EC;
+  --surface: #FFFEFA;
+  --primary: #173F35;
+  --accent: #C69A45;
+  --foreground: #252A28;
+  --muted: #777C78;
+  --border: #E7E3D9;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --background: #121C18;
+  --surface: #1C2923;
+  --primary: #A4C5AC;
+  --accent: #D6B36D;
+  --foreground: #F0F0E9;
+  --muted: #A5AEA7;
+  --border: #34443B;
+}
+
+
+/* =========================================
+   TAILWIND THEME CONFIGURATION
+========================================= */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+
+/* =========================================
+   TYPOGRAPHY
+========================================= */
+
+.font-editorial {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+
+/* =========================================
+   ANIMATIONS
+========================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.7s ease both;
+}
+
+
+@keyframes gentleFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-float {
+  animation: gentleFloat 5s ease-in-out infinite;
+}
+
+
+/* =========================================
+   IMAGE INTERACTIONS
+========================================= */
+
+.collection-image {
+  transition: transform 0.7s ease;
+}
+
+.collection-card:hover .collection-image {
+  transform: scale(1.08);
+}
+
+
+/* =========================================
+   ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
