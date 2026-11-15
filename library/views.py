@@ -30,7 +30,14 @@ from rest_framework.views import APIView
 from rest_framework import status
 from rest_framework.permissions import AllowAny
 
-from .serializers import UserRegistrationSerializer
+from .serializers import (
+    UserRegistrationSerializer,
+    UserSerializer
+)
+
+from django.contrib.auth import authenticate, get_user_model
+from rest_framework.authtoken.models import Token
+from rest_framework.authentication import TokenAuthentication
 
 # Create your views here.
 
@@ -281,14 +288,84 @@ class RegisterView(APIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
 
+        token, created = Token.objects.get_or_create(
+            user=user
+        )
+
         return Response(
             {
                 "message": "Account created successfully.",
-                "user": {
-                    "id": user.id,
-                    "username": user.username,
-                    "email": user.email
-                }
+                "token": token.key,
+                "user": UserSerializer(user).data
             },
             status=status.HTTP_201_CREATED
         )
+
+class LoginView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        identifier = request.data.get("identifier", "").strip()
+        password = request.data.get("password", "")
+
+        if not identifier or not password:
+            return Response(
+                {
+                    "detail": "Username/email and password are required."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        User = get_user_model()
+
+        # Allow login with either username or email.
+        try:
+            user = User.objects.get(
+                email__iexact=identifier
+            )
+            username = user.username
+
+        except User.DoesNotExist:
+            username = identifier
+
+        user = authenticate(
+            request,
+            username=username,
+            password=password
+        )
+
+        if user is None:
+            return Response(
+                {
+                    "detail": "Invalid username/email or password."
+                },
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+        token, created = Token.objects.get_or_create(
+            user=user
+        )
+
+        return Response({
+            "message": "Login successful.",
+            "token": token.key,
+            "user": UserSerializer(user).data
+        })
+
+class LogoutView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def post(self, request):
+        request.user.auth_token.delete()
+
+        return Response({
+            "message": "Logged out successfully."
+        })
+
+class CurrentUserView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = UserSerializer(request.user)
+
+        return Response(serializer.data)

@@ -194,7 +194,7 @@ export default function Home() {
 
                 <div className="absolute bottom-8 left-8 right-8">
 
-                  <p className="text-accent text-xs uppercase tracking-[0.2em] mb-4">
+                  <p className="text-accent text-xs font-bold border-white/30 bg-black/20 px-[10px] py-[5px] backdrop-blur-md rounded-[2em] inline: diplay: inline uppercase tracking-[0.2em] mb-4">
                     Knowledge • Memory • Craft
                   </p>
 
@@ -208,7 +208,7 @@ export default function Home() {
 
               {/* Floating Archive Label */}
 
-              <div className="absolute -bottom-6 -left-3 md:-left-8 bg-surface border border-border shadow-xl rounded-2xl p-5">
+              <div className="absolute -bottom-16 -left-3 md:-left-8 bg-surface border border-border shadow-xl rounded-2xl p-5">
 
                 <div className="flex items-center gap-3">
 
@@ -268,7 +268,7 @@ export default function Home() {
 
               <div className="absolute bottom-7 left-7">
 
-                <p className="text-accent text-xs uppercase tracking-[0.2em]">
+                <p className="text-accent text-xs font-bold border-white/30 bg-black/20 px-[10px] py-[5px] backdrop-blur-md rounded-[2em] display:inline uppercase tracking-[0.2em]">
                   The human element
                 </p>
 
@@ -295,13 +295,13 @@ export default function Home() {
 
               </div>
 
-              <h2 className="font-editorial text-4xl md:text-5xl xl:text-6xl leading-tight mt-7">
+              <h2 className="font-editorial text-4xl dark:text-[#173F35] md:text-5xl xl:text-6xl leading-tight mt-7">
 
                 Before the prompt, there was the programmer.
 
               </h2>
 
-              <p className="text-white/70 leading-8 mt-8">
+              <p className="text-white/70 dark:text-[#173F35]/75 leading-8 mt-8">
 
                 Technology continues to evolve, and artificial intelligence
                 is changing how we build software.
@@ -311,7 +311,7 @@ export default function Home() {
 
               </p>
 
-              <p className="text-white/70 leading-8 mt-5">
+              <p className="text-white/70 dark:text-[#173F35]/75 leading-8 mt-5">
 
                 RootScroll encourages us to preserve the knowledge and
                 craftsmanship behind the code — one physical book at a time.
@@ -408,7 +408,7 @@ export default function Home() {
 
                 <div className="absolute top-6 left-6 flex items-center gap-3">
 
-                  <span className="text-white/70 text-xs tracking-widest">
+                  <span className="text-white/70 text-xs tracking-widest border-white/30 bg-black/20 px-[10px] py-[5px] backdrop-blur-md rounded-[2em]">
                     COLLECTION {collection.number}
                   </span>
 
@@ -492,18 +492,18 @@ export default function Home() {
               Your next discovery awaits
             </p>
 
-            <h2 className="font-editorial text-4xl md:text-5xl text-white mt-5">
+            <h2 className="font-editorial text-4xl md:text-5xl text-white dark:text-[#173F35] mt-5">
               Find something worth remembering.
             </h2>
 
-            <p className="text-white/70 leading-7 mt-6">
+            <p className="text-white/70 dark:text-[#173F35]/75 leading-7 mt-6">
               Explore the shelves, discover new perspectives and reconnect
               with the foundations of programming.
             </p>
 
             <Link
               href="/explore"
-              className="inline-flex items-center gap-3 mt-9 px-8 py-4 rounded-full bg-white text-primary text-sm font-semibold hover:bg-accent hover:text-white transition"
+              className="inline-flex items-center gap-3 mt-9 px-8 py-4 rounded-full bg-white text-[#173F35]/75 text-sm font-semibold hover:bg-accent hover:text-white transition"
             >
               Enter the Library
 

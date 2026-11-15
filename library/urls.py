@@ -1,7 +1,6 @@
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from rest_framework.authtoken.views import obtain_auth_token
 
 from .views import (
     CategoryViewSet,
@@ -10,7 +9,10 @@ from .views import (
     BookRequestViewSet,
     AdminBookRequestViewSet,
     BookCopyViewSet,
-    RegisterView
+    RegisterView,
+    LoginView,
+    LogoutView,
+    CurrentUserView
 )
 
 router = DefaultRouter()
@@ -28,6 +30,10 @@ router.register("admin/book-copies", BookCopyViewSet, basename="book-copies")
 
 urlpatterns = [
     path("", include(router.urls)),
+
+    # Authentication
     path("auth/register/", RegisterView.as_view(), name="register"),
-    path("auth/login/", obtain_auth_token, name="login"),
+    path("auth/login/", LoginView.as_view(), name="login"),
+    path("auth/logout/", LogoutView.as_view(), name="logout"),
+    path("auth/me/", CurrentUserView.as_view(), name="current-user"),
 ]

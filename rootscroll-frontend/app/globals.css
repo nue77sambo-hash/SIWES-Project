@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
 /* =========================================
    ROOTSCROLL THEME VARIABLES
@@ -10,7 +11,7 @@
   --background: #F7F4EC;
   --surface: #FFFEFA;
   --primary: #173F35;
-  --accent: #C69A45;
+  --accent: #ffc86a;
   --foreground: #252A28;
   --muted: #777C78;
   --border: #E7E3D9;
@@ -22,7 +23,7 @@
   --background: #121C18;
   --surface: #1C2923;
   --primary: #A4C5AC;
-  --accent: #D6B36D;
+  --accent: #af7d07;
   --foreground: #F0F0E9;
   --muted: #A5AEA7;
   --border: #34443B;
