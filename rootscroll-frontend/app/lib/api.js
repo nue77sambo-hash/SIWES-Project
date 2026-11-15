@@ -1,100 +1,144 @@
-const API_BASE_URL =
+import {
+  getToken,
+  handleSessionExpired,
+} from "./auth";
+
+const API_BASE_URL = (
   process.env.NEXT_PUBLIC_API_BASE_URL ||
-  "http://127.0.0.1:8000/api";
+  "http://127.0.0.1:8000/api"
+).replace(/\/$/, "");
 
-const getHeaders = (authenticated = false) => {
-  const headers = {
-    "Content-Type": "application/json",
-  };
+// CENTRAL API REQUEST HANDLER
 
-  if (authenticated && typeof window !== "undefined") {
-    const token = localStorage.getItem("rootscroll_token");
+const apiRequest = async (
+  endpoint,
+  {
+    method = "GET",
+    body,
+    authenticated = false,
+    headers = {},
+    ...options
+  } = {}
+) => {
+  const token = authenticated ? getToken() : null;
 
-    if (token) {
-      headers.Authorization = `Token ${token}`;
-    }
+  if (authenticated && !token) {
+    const error = new Error("Please sign in to continue.");
+    error.status = 401;
+    throw error;
   }
 
-  return headers;
-};
+  const requestHeaders = { ...headers };
 
-const handleResponse = async (response) => {
+  if (
+    body !== undefined &&
+    !(typeof FormData !== "undefined" && body instanceof FormData)
+  ) {
+    requestHeaders["Content-Type"] = "application/json";
+  }
+
+  if (token) {
+    requestHeaders.Authorization = `Token ${token}`;
+  }
+
+  const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+    method,
+    headers: requestHeaders,
+    body,
+    cache: "no-store",
+    ...options,
+  });
+
   const data = await response.json().catch(() => null);
 
+  // Handle expired sessions
+  if (response.status === 401 && token) {
+    handleSessionExpired();
+  }
+
+  // Handle API errors
   if (!response.ok) {
     const message =
       data?.detail ||
       data?.message ||
-      (data ? JSON.stringify(data) : "Something went wrong.");
+      data?.non_field_errors?.[0] ||
+      Object.values(data || {})
+        .flat(Infinity)
+        .find((error) => typeof error === "string") ||
+      "Something went wrong. Please try again.";
 
-    throw new Error(message);
+    const error = new Error(message);
+    error.status = response.status;
+    error.data = data;
+
+    throw error;
   }
 
   return data;
 };
 
-export const getBooks = async (params = "") => {
-  const response = await fetch(
-    `${API_BASE_URL}/books/${params}`,
-    {
-      headers: getHeaders(),
-      cache: "no-store",
-    }
-  );
+// BOOKS
 
-  return handleResponse(response);
+export const getBooks = async (params = "") => {
+  return apiRequest(`/books/${params}`);
 };
 
 export const getBookDetails = async (id) => {
-  const response = await fetch(
-    `${API_BASE_URL}/books/${id}/`,
-    {
-      headers: getHeaders(),
-      cache: "no-store",
-    }
-  );
-
-  return handleResponse(response);
+  return apiRequest(`/books/${id}/`);
 };
 
-export const getCategories = async () => {
-  const response = await fetch(
-    `${API_BASE_URL}/categories/`,
-    {
-      headers: getHeaders(),
-      cache: "no-store",
-    }
-  );
+// CATEGORIES
 
-  return handleResponse(response);
+export const getCategories = async () => {
+  return apiRequest("/categories/");
+};
+
+// SAVED BOOKS
+
+export const getSavedBooks = async () => {
+  return apiRequest("/saved-books/", {
+    authenticated: true,
+  });
 };
 
 export const saveBook = async (bookId) => {
-  const response = await fetch(
-    `${API_BASE_URL}/saved-books/`,
-    {
-      method: "POST",
-      headers: getHeaders(true),
-      body: JSON.stringify({
-        book_id: bookId,
-      }),
-    }
-  );
+  return apiRequest("/saved-books/", {
+    method: "POST",
+    authenticated: true,
+    body: JSON.stringify({
+      book_id: bookId,
+    }),
+  });
+};
 
-  return handleResponse(response);
+export const removeSavedBook = async (savedBookId) => {
+  return apiRequest(`/saved-books/${savedBookId}/`, {
+    method: "DELETE",
+    authenticated: true,
+  });
+};
+
+// BOOK REQUESTS
+
+export const getBookRequests = async () => {
+  return apiRequest("/book-requests/", {
+    authenticated: true,
+  });
 };
 
 export const requestBook = async (bookId) => {
-  const response = await fetch(
-    `${API_BASE_URL}/book-requests/`,
-    {
-      method: "POST",
-      headers: getHeaders(true),
-      body: JSON.stringify({
-        book_id: bookId,
-      }),
-    }
-  );
+  return apiRequest("/book-requests/", {
+    method: "POST",
+    authenticated: true,
+    body: JSON.stringify({
+      book_id: bookId,
+    }),
+  });
+};
 
-  return handleResponse(response);
+export const cancelBookRequest = async (requestId) => {
+  return apiRequest(`/book-requests/${requestId}/cancel/`, {
+    method: "POST",
+    authenticated: true,
+  });
 };

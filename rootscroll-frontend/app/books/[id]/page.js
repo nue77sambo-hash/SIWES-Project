@@ -10,6 +10,8 @@ import {
   saveBook,
 } from "../../lib/api";
 
+import { getToken } from "../../lib/auth";
+
 export default function BookDetails() {
   const params = useParams();
   const router = useRouter();
@@ -24,6 +26,8 @@ export default function BookDetails() {
 
   const [requesting, setRequesting] = useState(false);
   const [saving, setSaving] = useState(false);
+
+  const [requestSubmitted, setRequestSubmitted] = useState(false);
 
   useEffect(() => {
     const fetchBook = async () => {
@@ -43,10 +47,8 @@ export default function BookDetails() {
   }, [id]);
 
   const handleRequest = async () => {
-    const token = localStorage.getItem("rootscroll_token");
-
-    if (!token) {
-      router.push("/login");
+    if (!getToken()) {
+      router.push(`/login?next=${encodeURIComponent(`/books/${id}`)}`);
       return;
     }
 
@@ -57,22 +59,24 @@ export default function BookDetails() {
     try {
       await requestBook(book.id);
 
+      setRequestSubmitted(true);
+
       setMessage(
-        "Your borrowing request has been submitted successfully. It is now pending approval."
+        "Your borrowing request has been submitted successfully. It is now awaiting approval."
       );
 
     } catch (error) {
-      setError(error.message || "Unable to submit your request.");
+      setError(
+        error.message || "Unable to submit your borrowing request."
+      );
     } finally {
       setRequesting(false);
     }
   };
 
   const handleSave = async () => {
-    const token = localStorage.getItem("rootscroll_token");
-
-    if (!token) {
-      router.push("/login");
+    if (!getToken()) {
+      router.push(`/login?next=${encodeURIComponent(`/books/${id}`)}`);
       return;
     }
 
@@ -83,10 +87,18 @@ export default function BookDetails() {
     try {
       await saveBook(book.id);
 
-      setMessage("This book has been added to your reading list.");
+      setMessage("This book has been added to your saved collection.");
 
     } catch (error) {
-      setError(error.message || "Unable to save this book.");
+      if (error.status === 400) {
+        setError(
+          "This book may already be in your saved collection."
+        );
+      } else {
+        setError(
+          error.message || "Unable to save this book."
+        );
+      }
     } finally {
       setSaving(false);
     }
@@ -316,11 +328,17 @@ export default function BookDetails() {
 
             <button
               onClick={handleRequest}
-              disabled={availableCopies < 1 || requesting}
+              disabled={
+                availableCopies < 1 ||
+                requesting ||
+                requestSubmitted
+              }
               className="flex-1 py-4 px-6 rounded-full bg-primary text-background text-sm font-semibold disabled:opacity-40 hover:opacity-90 transition"
             >
               {requesting
                 ? "Submitting request..."
+                : requestSubmitted
+                ? "Request Submitted"
                 : "Request to Borrow"}
             </button>
 
@@ -333,7 +351,6 @@ export default function BookDetails() {
             </button>
 
           </div>
-
           <p className="text-xs text-muted mt-5 leading-6">
             RootScroll does not sell or distribute digital copies.
             Borrowing requests are subject to physical copy availability

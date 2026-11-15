@@ -120,7 +120,7 @@ class SavedBookViewSet(viewsets.ModelViewSet):
 class BookRequestViewSet(viewsets.ModelViewSet):
     serializer_class = BookRequestSerializer
     permission_classes = [IsAuthenticated]
-    http_method_names = ["get", "post", "delete", "head", "options"]
+    http_method_names = ["get", "post", "head", "options"]
 
     def get_queryset(self):
         return BookRequest.objects.filter(
@@ -134,13 +134,27 @@ class BookRequestViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         book = serializer.validated_data["book"]
 
+        active_request = BookRequest.objects.filter(
+            user=self.request.user,
+            book=book,
+            status__in=[
+                BookRequest.RequestStatus.PENDING,
+                BookRequest.RequestStatus.APPROVED,
+            ]
+        ).exists()
+
+        if active_request:
+            raise ValidationError({
+                "detail": "You already have an active request for this book."
+            })
+
         if not BookCopy.objects.filter(
             book=book,
             status=BookCopy.CopyStatus.AVAILABLE
         ).exists():
-            raise ValidationError(
-                {"detail": "This book is currently unavailable."}
-            )
+            raise ValidationError({
+                "detail": "This book is currently unavailable."
+            })
 
         serializer.save(user=self.request.user)
 
