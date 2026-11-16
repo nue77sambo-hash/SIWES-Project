@@ -16,7 +16,7 @@ export default function LoadingButton({
             className={`
                 flex w-full items-center justify-center gap-2
                 rounded-lg bg-primary px-5 py-3.5
-                text-sm font-semibold text-white
+                text-sm font-semibold text-[#173F35]
                 transition-all hover:opacity-90
                 disabled:cursor-not-allowed disabled:opacity-60
                 ${className}

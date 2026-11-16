@@ -176,6 +176,7 @@ export default function LoginPage() {
 
     return (
         <AuthLayout
+            image="/images/auth/young-student-working-assignment.jpg"
             eyebrow="WELCOME BACK"
             title="Return to the archive."
             description="Sign in to continue exploring your collections, saved books and library requests."

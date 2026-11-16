@@ -266,6 +266,7 @@ export default function RegisterPage() {
 
     return (
         <AuthLayout
+            image="/images/auth/young-student-working-assignment (1).jpg"
             eyebrow="JOIN THE ARCHIVE"
             title="Create your account."
             description="Begin your journey through the knowledge, ideas, and literature behind the world of computing."
