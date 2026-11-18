@@ -302,7 +302,7 @@ export default function AccountPage() {
             loading={loggingOut}
             loadingText="Signing out..."
             onClick={handleLogout}
-            className="!w-auto !px-5 !py-3 bg-transparent border border-border text-foreground hover:bg-background"
+            className="!w-auto !px-5 !py-3 bg-transparent border border-border text-surface hover:bg-background"
           >
             Sign Out
           </LoadingButton>

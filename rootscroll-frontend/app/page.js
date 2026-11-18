@@ -259,7 +259,7 @@ export default function Home() {
             <div className="relative h-[350px] md:h-[460px] rounded-3xl overflow-hidden">
 
               <img
-                src="/images/hero/kevin-canlas-QYHehJ9Iovs-unsplash.jpg"
+                src="/images/hero/RootScroll image 3.jpg"
                 alt="An open book representing the foundations of human knowledge"
                 className="w-full h-full object-cover"
               />
