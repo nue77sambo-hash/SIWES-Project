@@ -1,9 +1,7 @@
 @import "tailwindcss";
 @custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
 
-/* =========================================
-   ROOTSCROLL THEME VARIABLES
-========================================= */
+/* rootscroll theme variables */
 
 :root {
   color-scheme: light;
@@ -30,9 +28,7 @@
 }
 
 
-/* =========================================
-   TAILWIND THEME CONFIGURATION
-========================================= */
+/* tailwing theme configuration */
 
 @theme inline {
   --color-background: var(--background);
@@ -48,9 +44,7 @@
 }
 
 
-/* =========================================
-   GLOBAL RESET
-========================================= */
+/* global reset */
 
 * {
   box-sizing: border-box;
@@ -91,18 +85,14 @@ img {
 }
 
 
-/* =========================================
-   TYPOGRAPHY
-========================================= */
+/* typography */
 
 .font-editorial {
   font-family: Georgia, "Times New Roman", serif;
 }
 
 
-/* =========================================
-   ANIMATIONS
-========================================= */
+/* animations */
 
 @keyframes fadeUp {
   from {
@@ -137,9 +127,7 @@ img {
 }
 
 
-/* =========================================
-   IMAGE INTERACTIONS
-========================================= */
+/* image interactions */
 
 .collection-image {
   transition: transform 0.7s ease;
@@ -150,9 +138,7 @@ img {
 }
 
 
-/* =========================================
-   ACCESSIBILITY
-========================================= */
+/* accessibility */
 
 @media (prefers-reduced-motion: reduce) {
   *,

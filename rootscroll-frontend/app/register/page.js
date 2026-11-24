@@ -265,11 +265,8 @@ export default function RegisterPage() {
     if (isAuthenticated) return null;
 
     return (
-        <AuthLayout
-            image="/images/auth/kevin-canlas-QYHehJ9Iovs-unsplash.jpg"
-            eyebrow="JOIN THE ARCHIVE"
-            title="Create your account."
-            description="Begin your journey through the knowledge, ideas, and literature behind the world of computing."
+        <AuthLayout image="/images/auth/kevin-canlas-QYHehJ9Iovs-unsplash.jpg" eyebrow="JOIN THE ARCHIVE" 
+            title="Create your account." description="Begin your journey through the knowledge, ideas, and literature behind the world of computing."
             footer={
                 <>
                     Already have an account?{" "}
@@ -282,17 +279,11 @@ export default function RegisterPage() {
                 </>
             }
         >
-            <form
-                onSubmit={handleSubmit}
-                noValidate
-                className="space-y-5"
-            >
+            <form onSubmit={handleSubmit} noValidate className="space-y-5">
                 {/* GENERAL ERROR */}
 
                 {errors.general && (
-                    <div
-                        role="alert"
-                        aria-live="assertive"
+                    <div role="alert" aria-live="assertive"
                         className="rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-500"
                     >
                         {errors.general}
