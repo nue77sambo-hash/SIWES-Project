@@ -1,6 +1,14 @@
+"use client";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
+  const [year, setYear] = useState(null);
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="bg-primary text-white dark:text-[#173F35] mt-24">
 
@@ -42,7 +50,7 @@ export default function Footer() {
 
         <div className="border-t border-white/20 border-dark:text-[#173F35]/20 mt-14 pt-7 flex flex-col md:flex-row justify-between gap-4 text-xs text-white/60 dark:text-[#173F35]/70">
 
-          <p>© {new Date().getFullYear()} RootScroll. All rights reserved.</p>
+          <p>© {year ?? ""} RootScroll. All rights reserved.</p>
 
           <p>Discover the knowledge. Find the book. Explore the roots of code.</p>
 
