@@ -1,0 +1,637 @@
+[
+{
+  "model": "library.category",
+  "pk": 1,
+  "fields": {
+    "name": "Learn to Code",
+    "description": "Hands on guides, tutorials and foundational resources for learning programming languages and development.",
+    "slug": "learn-to-code"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 2,
+  "fields": {
+    "name": "Understand the Code",
+    "description": "Explore algorithms data structures and the principles behind how software systems work.",
+    "slug": "understand-the-code"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 3,
+  "fields": {
+    "name": "The History of Programming",
+    "description": "Discover the pioneers, breakthroughs and stories that shaped the evolution of computing.",
+    "slug": "the-history-of-programming"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 4,
+  "fields": {
+    "name": "Beyond the Syntax",
+    "description": "Explore software craftmanship, engineering culture, problem-solving and the philosophy of technology.",
+    "slug": "beyond-the-syntax"
+  }
+},
+{
+  "model": "library.category",
+  "pk": 5,
+  "fields": {
+    "name": "Fiction & Imagination",
+    "description": "Enter imaginative worlds exploring artificial intelligence, digital futures and the relationship between humanity and technology.",
+    "slug": "fiction-and-imagination"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 1,
+  "fields": {
+    "name": "python"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 2,
+  "fields": {
+    "name": "javascript"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 3,
+  "fields": {
+    "name": "web development"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 4,
+  "fields": {
+    "name": "algorithms"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 5,
+  "fields": {
+    "name": "data structures"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 6,
+  "fields": {
+    "name": "software engineering"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 7,
+  "fields": {
+    "name": "clean code"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 8,
+  "fields": {
+    "name": "computer history"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 9,
+  "fields": {
+    "name": "artificial intelligence"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 10,
+  "fields": {
+    "name": "cyberpunk"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 11,
+  "fields": {
+    "name": "programming fundamentals"
+  }
+},
+{
+  "model": "library.tag",
+  "pk": 12,
+  "fields": {
+    "name": "software architecture"
+  }
+},
+{
+  "model": "library.book",
+  "pk": 1,
+  "fields": {
+    "title": "Learn to Code",
+    "author": "Eric Matthes",
+    "description": "A hands-on introduction to programming with Python covering core syntax, data structures, functions, object-oriented programming, and practical projects including web applications and data visualizations.",
+    "publisher": "No Starch Press",
+    "edition": "3rd Edition",
+    "publication_year": 2023,
+    "cover_image": "",
+    "category": 1,
+    "created_at": "2026-11-27T08:24:39.907Z",
+    "updated_at": "2026-11-27T08:24:39.907Z",
+    "tags": [
+      1,
+      3,
+      11
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 2,
+  "fields": {
+    "title": "Eloquent JavaScript",
+    "author": "Marjin Haverbeke",
+    "description": "A modern introduction to JavaScript and web programming that guides readers through language fundamentals, asynchronous programming, browser DOM manipulation, and server-side Node.js development.",
+    "publisher": "No Starch Press",
+    "edition": "4th Edition",
+    "publication_year": 2024,
+    "cover_image": "",
+    "category": 1,
+    "created_at": "2026-11-27T08:26:17.744Z",
+    "updated_at": "2026-11-27T08:26:17.744Z",
+    "tags": [
+      2,
+      3,
+      11
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 3,
+  "fields": {
+    "title": "Grokking Algorithms",
+    "author": "Aditya Bhargava",
+    "description": "An illustrated guide to foundational algorithms and data structures that breaks down sorting, searching, graph traversal, and dynamic programming using clear visual examples and practical code.",
+    "publisher": "Manning Publications",
+    "edition": "2nd Edition",
+    "publication_year": 2024,
+    "cover_image": "",
+    "category": 2,
+    "created_at": "2026-11-27T08:28:22.204Z",
+    "updated_at": "2026-11-27T08:28:22.204Z",
+    "tags": [
+      4,
+      5,
+      11
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 4,
+  "fields": {
+    "title": "Introduction to Algorithms",
+    "author": "Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein",
+    "description": "A comprehensive reference covering the design, mathematical analysis, and implementation of classic and modern algorithms, complex data structures, graph theory, and computational complexity.",
+    "publisher": "MIT Press",
+    "edition": "4th Edition",
+    "publication_year": 2022,
+    "cover_image": "",
+    "category": 2,
+    "created_at": "2026-11-27T08:30:12.544Z",
+    "updated_at": "2026-11-27T08:30:12.544Z",
+    "tags": [
+      4,
+      5,
+      6
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 5,
+  "fields": {
+    "title": "Code: The Hidden Language of Computer Hardware and Software",
+    "author": "Charles Petzold",
+    "description": "An accessible exploration of how computers work from the ground up, tracing the evolution from simple telegraph relays and binary logic gates to modern microprocessors and operating systems.",
+    "publisher": "Microsoft Press",
+    "edition": "2nd Edition",
+    "publication_year": 2022,
+    "cover_image": "",
+    "category": 3,
+    "created_at": "2026-11-27T08:32:07.176Z",
+    "updated_at": "2026-11-27T08:32:07.176Z",
+    "tags": [
+      8,
+      11,
+      12
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 7,
+  "fields": {
+    "title": "A History of Modern Computing",
+    "author": "Paul E. Ceruzzi",
+    "description": "A historical account of the computing revolution from early mainframes and minicomputers to personal computers, microprocessors, and the rise of global computer networks.",
+    "publisher": "MIT Press",
+    "edition": "2nd Edition",
+    "publication_year": 2003,
+    "cover_image": "",
+    "category": 3,
+    "created_at": "2026-11-27T08:33:25.011Z",
+    "updated_at": "2026-11-27T08:33:25.011Z",
+    "tags": [
+      8
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 8,
+  "fields": {
+    "title": "The Pragmatic Programmer",
+    "author": "David Thomas and Andrew Hunt",
+    "description": "A guide to software craftsmanship offering practical principles on writing adaptable code, debugging systematically, automating workflows, and thinking critically as a professional developer.",
+    "publisher": "David Thomas and Andrew Hunt",
+    "edition": "20th Anniversary Edition",
+    "publication_year": 2019,
+    "cover_image": "",
+    "category": 4,
+    "created_at": "2026-11-27T08:35:17.373Z",
+    "updated_at": "2026-11-27T08:35:17.373Z",
+    "tags": [
+      6,
+      7,
+      12
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 9,
+  "fields": {
+    "title": "Clean Code: A Handbook of Agile Software Craftmanship",
+    "author": "Robert C. Martin",
+    "description": "A manual of software design principles and coding practices focused on writing readable, maintainable, and well-tested code through meaningful naming, small functions, and disciplined refactoring.",
+    "publisher": "Prentice Hall",
+    "edition": "1st Edition",
+    "publication_year": 2008,
+    "cover_image": "",
+    "category": 4,
+    "created_at": "2026-11-27T08:36:46.135Z",
+    "updated_at": "2026-11-27T08:36:46.135Z",
+    "tags": [
+      6,
+      7,
+      12
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 10,
+  "fields": {
+    "title": "Neuromancer",
+    "author": "William Gibson",
+    "description": "A foundational cyberpunk novel following a washed-up computer hacker hired for a high-stakes heist inside a global virtual reality network governed by powerful corporations and artificial intelligences.",
+    "publisher": "Ace Books",
+    "edition": "1st Edition",
+    "publication_year": 1984,
+    "cover_image": "",
+    "category": 5,
+    "created_at": "2026-11-27T08:37:58.339Z",
+    "updated_at": "2026-11-27T08:37:58.339Z",
+    "tags": [
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "library.book",
+  "pk": 11,
+  "fields": {
+    "title": "Do Androids Dream of Electric Sheep?",
+    "author": "Philip K. Dick",
+    "description": "A dystopian science fiction novel set in a post-apocalyptic world where a bounty hunter tracks down rogue lifelike androids, questioning empathy, consciousness, and what defines humanity.",
+    "publisher": "Doubleday",
+    "edition": "1st Edition",
+    "publication_year": 1968,
+    "cover_image": "",
+    "category": 5,
+    "created_at": "2026-11-27T08:39:35.744Z",
+    "updated_at": "2026-11-27T08:39:35.744Z",
+    "tags": [
+      9,
+      10
+    ]
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 1,
+  "fields": {
+    "book": 1,
+    "copy_code": "ROOT-LTC-001",
+    "status": "available",
+    "added_at": "2026-11-27T08:40:19.132Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 2,
+  "fields": {
+    "book": 1,
+    "copy_code": "ROOT-LTC-002",
+    "status": "reserved",
+    "added_at": "2026-11-27T08:40:43.836Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 3,
+  "fields": {
+    "book": 1,
+    "copy_code": "ROOT-LTC-003",
+    "status": "borrowed",
+    "added_at": "2026-11-27T08:41:02.959Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 4,
+  "fields": {
+    "book": 2,
+    "copy_code": "ROOT-EJ-001",
+    "status": "available",
+    "added_at": "2026-11-27T08:41:27.352Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 5,
+  "fields": {
+    "book": 2,
+    "copy_code": "ROOT-EJ-002",
+    "status": "available",
+    "added_at": "2026-11-27T08:41:39.702Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 6,
+  "fields": {
+    "book": 2,
+    "copy_code": "ROOT-EJ-003",
+    "status": "borrowed",
+    "added_at": "2026-11-27T08:41:55.074Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 7,
+  "fields": {
+    "book": 3,
+    "copy_code": "ROOT-GA-001",
+    "status": "borrowed",
+    "added_at": "2026-11-27T08:42:19.978Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 8,
+  "fields": {
+    "book": 3,
+    "copy_code": "ROOT-GA-002",
+    "status": "available",
+    "added_at": "2026-11-27T08:42:33.629Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 9,
+  "fields": {
+    "book": 3,
+    "copy_code": "ROOT-GA-003",
+    "status": "available",
+    "added_at": "2026-11-27T08:42:50.832Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 10,
+  "fields": {
+    "book": 4,
+    "copy_code": "ROOT-ITA-001",
+    "status": "borrowed",
+    "added_at": "2026-11-27T08:43:16.893Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 11,
+  "fields": {
+    "book": 4,
+    "copy_code": "ROOT-ITA-002",
+    "status": "available",
+    "added_at": "2026-11-27T08:43:35.202Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 12,
+  "fields": {
+    "book": 4,
+    "copy_code": "ROOT-ITA-003",
+    "status": "available",
+    "added_at": "2026-11-27T08:43:48.124Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 13,
+  "fields": {
+    "book": 5,
+    "copy_code": "ROOT-CTHLOCHAS-001",
+    "status": "available",
+    "added_at": "2026-11-27T08:44:26.052Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 14,
+  "fields": {
+    "book": 5,
+    "copy_code": "ROOT-CTHLOCHAS-002",
+    "status": "reserved",
+    "added_at": "2026-11-27T08:44:57.936Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 15,
+  "fields": {
+    "book": 5,
+    "copy_code": "ROOT-CTHLOCHAS-003",
+    "status": "available",
+    "added_at": "2026-11-27T08:45:20.254Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 16,
+  "fields": {
+    "book": 7,
+    "copy_code": "ROOT-AHOMC-001",
+    "status": "borrowed",
+    "added_at": "2026-11-27T08:45:56.034Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 17,
+  "fields": {
+    "book": 7,
+    "copy_code": "ROOT-AHOMC-002",
+    "status": "reserved",
+    "added_at": "2026-11-27T08:46:09.930Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 18,
+  "fields": {
+    "book": 7,
+    "copy_code": "ROOT-AHOMC-003",
+    "status": "borrowed",
+    "added_at": "2026-11-27T08:46:23.565Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 19,
+  "fields": {
+    "book": 8,
+    "copy_code": "ROOT-TPP-001",
+    "status": "available",
+    "added_at": "2026-11-27T08:46:44.733Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 20,
+  "fields": {
+    "book": 8,
+    "copy_code": "ROOT-TPP-002",
+    "status": "available",
+    "added_at": "2026-11-27T08:46:57.504Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 21,
+  "fields": {
+    "book": 8,
+    "copy_code": "ROOT-TPP-003",
+    "status": "available",
+    "added_at": "2026-11-27T08:47:07.416Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 22,
+  "fields": {
+    "book": 9,
+    "copy_code": "ROOT-CCAHOASC-001",
+    "status": "available",
+    "added_at": "2026-11-27T08:47:33.254Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 23,
+  "fields": {
+    "book": 9,
+    "copy_code": "ROOT-CCAHOASC-002",
+    "status": "reserved",
+    "added_at": "2026-11-27T08:47:47.910Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 24,
+  "fields": {
+    "book": 9,
+    "copy_code": "ROOT-CCAHOASC-003",
+    "status": "borrowed",
+    "added_at": "2026-11-27T08:48:03.491Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 25,
+  "fields": {
+    "book": 10,
+    "copy_code": "ROOT-N-001",
+    "status": "available",
+    "added_at": "2026-11-27T08:48:29.392Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 26,
+  "fields": {
+    "book": 10,
+    "copy_code": "ROOT-N-002",
+    "status": "available",
+    "added_at": "2026-11-27T08:48:45.464Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 27,
+  "fields": {
+    "book": 10,
+    "copy_code": "ROOT-N-003",
+    "status": "available",
+    "added_at": "2026-11-27T09:08:59.220Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 28,
+  "fields": {
+    "book": 11,
+    "copy_code": "ROOT-DADOES-001",
+    "status": "available",
+    "added_at": "2026-11-27T09:10:15.715Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 29,
+  "fields": {
+    "book": 11,
+    "copy_code": "ROOT-DADOES-002",
+    "status": "available",
+    "added_at": "2026-11-27T09:11:10.093Z"
+  }
+},
+{
+  "model": "library.bookcopy",
+  "pk": 30,
+  "fields": {
+    "book": 11,
+    "copy_code": "ROOT-DADOES-003",
+    "status": "available",
+    "added_at": "2026-11-27T09:11:33.426Z"
+  }
+}
+]
