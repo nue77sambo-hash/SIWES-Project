@@ -1,6 +1,7 @@
 "use client";
 
 import { useTheme } from "../Providers/ThemeProvider";
+import { FiMoon, FiSun } from "react-icons/fi";
 
 export default function ThemeToggle() {
   const { theme, toggleTheme, mounted } = useTheme();
@@ -18,9 +19,9 @@ export default function ThemeToggle() {
       className="h-10 w-10 flex items-center justify-center rounded-full border border-border text-foreground hover:bg-primary/10 transition-all duration-300"
     >
       {theme === "light" ? (
-        <span className="text-xl">☾</span>
+        <FiMoon size={20} />
       ) : (
-        <span className="text-xl">☀</span>
+        <FiSun size={20} />
       )}
     </button>
   );
