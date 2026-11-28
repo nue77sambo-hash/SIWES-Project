@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 export default function BookCard({ book }) {
-  const availableCopies = book.available_copies ?? 0;
+  const availableCopies = book.available_copies ?? 0; // Nullish Coalescing operator
 
   return (
     <article className="group bg-surface border border-border rounded-2xl overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-300">
@@ -26,7 +26,7 @@ export default function BookCard({ book }) {
           )}
 
           <div className="absolute top-4 left-4 bg-background/90 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] uppercase tracking-wider text-foreground">
-            {book.category?.name || "Programming"}
+            {book.category?.name || "Programming"} // Optional chaining
           </div>
 
         </div>

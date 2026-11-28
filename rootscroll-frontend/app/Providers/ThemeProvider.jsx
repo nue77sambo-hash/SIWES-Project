@@ -1,15 +1,15 @@
-"use client";
+"use client"; // ThemeProvider is a client component
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-const ThemeContext = createContext(null);
+const ThemeContext = createContext(null); // communication channel
 
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState("light");
-  const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false); // initialization signal for theme preference
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem("rootscroll-theme");
+    const savedTheme = localStorage.getItem("rootscroll-theme"); //utilizing browser API
 
     const initialTheme =
       savedTheme ||
@@ -18,7 +18,7 @@ export function ThemeProvider({ children }) {
         : "light");
 
     setTheme(initialTheme);
-    document.documentElement.dataset.theme = initialTheme;
+    document.documentElement.dataset.theme = initialTheme; // <html lang="en" data-theme="{initialTheme}">
 
     setMounted(true);
   }, []);

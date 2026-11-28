@@ -10,12 +10,12 @@ export default function ThemeToggle() {
     return (
       <div className="h-10 w-10 rounded-full border border-border" />
     );
-  }
+  } // visual placeholder preventing hydration mismatch
 
   return (
     <button
       onClick={toggleTheme}
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
+      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`} // accessibilty attribute e.g screen readers
       className="h-10 w-10 flex items-center justify-center rounded-full border border-border text-foreground hover:bg-primary/10 transition-all duration-300"
     >
       {theme === "light" ? (
